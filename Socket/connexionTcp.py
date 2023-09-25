@@ -1,15 +1,18 @@
-#Faire le debug du programme suivant et expliquer ce qu'il fait
-import socket, re
+#!/usr/bin/python3
+import socket, re # import socket obligatoire, re pour les expressions regulières
 
-re_address_ip = re.compile(r'"ip": "[0-9\.]+"')
+readresseip = re.compile(rb'"ip": "[0-9]\.+"') # on rajoute rb pour Raw et Byte
 
-ma_socket=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-tsap_serveur = ("ipinfo.io", 80)
+ma_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+serveur = ('ipinfo.io', 80) # port 80 correspondant à http
 
-ma_socket.connect(tsap_serveur)
-ma_socket.sendall(b"GET / HTTP/1.0\r\nHost: ipinfo.io\r\n\r\n")
+ma_socket.connect(serveur)
+ma_socket.sendall(b'GET/HTTP/1.0\r\n\r\nHost:ipinfo.io\r\n\r\n')
 while 1:
-    print(ma_socket.recv(1024))
-    if not ma_socket.recv(1024):
+    ligne = ma_socket.recv(1024)
+    if not ligne:
+        break
+    resultat = readresseip.search(ligne)
+    if resultat:
         print(resultat.group(1))
 ma_socket.close()
