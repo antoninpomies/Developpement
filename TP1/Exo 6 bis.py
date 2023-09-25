@@ -16,7 +16,7 @@ for i in liste_fichiers:
     else:
         liste_fic.append(i)
 
-print("Liste Répertoires : \n", liste_rep)
-print("Liste Executables : \n", liste_exe)
-print("Liste Fichiers : \n", liste_fic)
+print("\nListe Répertoires : \n", liste_rep)
+print("\nListe Executables : \n", liste_exe)
+print("\nListe Fichiers : \n", liste_fic)
 
