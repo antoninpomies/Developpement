@@ -1,7 +1,7 @@
 import sys
 import re
 
-re_separateurs = re.compile('^([0-9.]+).*"(POST[^"]+)"') # ^ permet de sélectionner une expression au début du texte
+re_separateurs = re.compile('^([0-9.]+).*"(POST[^"]+).*"(404[^"]+)"') # ^ permet de sélectionner une expression au début du texte
 chemin_fichier = 'access.log'
 
 try:
@@ -20,4 +20,5 @@ while 1:
         #print(ligne)
         print("adresse ip :", resultat.group(1))
         print("requete :", resultat.group(2))
+        print("code :", resultat.group(3))
 descripteur.close() 
