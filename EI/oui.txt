@@ -1,0 +1,100 @@
+E0:43:DB	Shenzhen ViewAt Technology Co.,Ltd.
+24:05:F5	Integrated Device Technology (Malaysia) Sdn. Bhd.
+3C:D9:2B	Hewlett Packard
+9C:8E:99	Hewlett Packard
+B4:99:BA	Hewlett Packard
+1C:C1:DE	Hewlett Packard
+C8:54:4B	Zyxel Communications Corporation
+3C:35:56	Cognitec Systems GmbH
+00:50:BA	D-Link Corporation
+00:17:9A	D-Link Corporation
+18:62:2C	Sagemcom Broadband SAS
+7C:03:D8	Sagemcom Broadband SAS
+E8:F1:B0	Sagemcom Broadband SAS
+38:F9:D3	Apple, Inc.
+00:F8:71	DGS Denmark A/S
+20:BB:76	COL GIOVANNI PAOLO SpA
+2C:22:8B	CTR SRL
+34:8A:AE	Sagemcom Broadband SAS
+BC:EC:23	SHENZHEN CHUANGWEI-RGB ELECTRONICS CO.,LTD
+AC:06:C7	ServerNet S.r.l.
+CC:46:D6	Cisco Systems, Inc
+48:AD:08	HUAWEI TECHNOLOGIES CO.,LTD
+2C:AB:00	HUAWEI TECHNOLOGIES CO.,LTD
+00:E0:FC	HUAWEI TECHNOLOGIES CO.,LTD
+24:DF:6A	HUAWEI TECHNOLOGIES CO.,LTD
+00:9A:CD	HUAWEI TECHNOLOGIES CO.,LTD
+A0:C9:A0	Murata Manufacturing Co., Ltd.
+38:F2:3E	Microsoft Mobile Oy
+58:AC:78	Cisco Systems, Inc
+90:7F:61	Chicony Electronics Co., Ltd.
+28:BC:18	SourcingOverseas Co. Ltd
+80:7A:BF	HTC Corporation
+40:9F:87	Jide Technology (Hong Kong) Limited
+3C:5A:B4	Google, Inc.
+00:1A:11	Google, Inc.
+D8:3C:69	Shenzhen TINNO Mobile Technology Corp.
+74:AC:5F	Qiku Internet Network Scientific (Shenzhen) Co., Ltd.
+BC:83:A7	SHENZHEN CHUANGWEI-RGB ELECTRONICS CO.,LTD
+00:03:47	Intel Corporation
+00:11:75	Intel Corporation
+00:13:E8	Intel Corporate
+00:13:02	Intel Corporate
+E4:F8:9C	Intel Corporate
+A4:02:B9	Intel Corporate
+4C:34:88	Intel Corporate
+00:0D:0B	BUFFALO.INC
+00:07:40	BUFFALO.INC
+00:24:A5	BUFFALO.INC
+DC:FB:02	BUFFALO.INC
+20:A6:0C	Xiaomi Communications Co Ltd
+F4:CE:46	Hewlett Packard
+00:1C:C4	Hewlett Packard
+00:25:B3	Hewlett Packard
+00:18:71	Hewlett Packard
+00:0B:CD	Hewlett Packard
+00:0E:7F	Hewlett Packard
+00:0F:20	Hewlett Packard
+00:11:0A	Hewlett Packard
+00:13:21	Hewlett Packard
+00:16:35	Hewlett Packard
+00:17:A4	Hewlett Packard
+00:08:02	Hewlett Packard
+90:E7:C4	HTC Corporation
+74:A7:8E	zte corporation
+D8:60:B0	bioMÃ©rieux Italia S.p.A.
+68:54:FD	Amazon Technologies Inc.
+80:38:BC	HUAWEI TECHNOLOGIES CO.,LTD
+D4:40:F0	HUAWEI TECHNOLOGIES CO.,LTD
+64:A6:51	HUAWEI TECHNOLOGIES CO.,LTD
+E8:CD:2D	HUAWEI TECHNOLOGIES CO.,LTD
+AC:E2:15	HUAWEI TECHNOLOGIES CO.,LTD
+EC:23:3D	HUAWEI TECHNOLOGIES CO.,LTD
+78:F5:FD	HUAWEI TECHNOLOGIES CO.,LTD
+80:B6:86	HUAWEI TECHNOLOGIES CO.,LTD
+10:C6:1F	HUAWEI TECHNOLOGIES CO.,LTD
+88:53:D4	HUAWEI TECHNOLOGIES CO.,LTD
+0C:37:DC	HUAWEI TECHNOLOGIES CO.,LTD
+BC:76:70	HUAWEI TECHNOLOGIES CO.,LTD
+24:DB:AC	HUAWEI TECHNOLOGIES CO.,LTD
+DC:4F:22	Espressif Inc.
+00:21:E8	Murata Manufacturing Co., Ltd.
+00:60:57	Murata Manufacturing Co., Ltd.
+00:07:D8	Hitron Technologies. Inc
+84:74:2A	zte corporation
+68:1A:B2	zte corporation
+E0:05:C5	TP-LINK TECHNOLOGIES CO.,LTD.
+A0:F3:C1	TP-LINK TECHNOLOGIES CO.,LTD.
+8C:21:0A	TP-LINK TECHNOLOGIES CO.,LTD.
+EC:17:2F	TP-LINK TECHNOLOGIES CO.,LTD.
+EC:88:8F	TP-LINK TECHNOLOGIES CO.,LTD.
+14:CF:92	TP-LINK TECHNOLOGIES CO.,LTD.
+64:56:01	TP-LINK TECHNOLOGIES CO.,LTD.
+14:CC:20	TP-LINK TECHNOLOGIES CO.,LTD.
+BC:46:99	TP-LINK TECHNOLOGIES CO.,LTD.
+0C:45:BA	HUAWEI TECHNOLOGIES CO.,LTD
+84:77:78	Cochlear Limited
+04:53:D5	Sysorex Global Holdings
+CC:A2:23	HUAWEI TECHNOLOGIES CO.,LTD
+E8:08:8B	HUAWEI TECHNOLOGIES CO.,LTD
+60:E7:01	HUAWEI TECHNOLOGIES CO.,LTD

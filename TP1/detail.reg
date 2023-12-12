@@ -1,0 +1,11 @@
+regex
+\w caractère normaux (lettre, chiffre, maj min)
+\W inverse
+\d chiffres
+\D inverse
+\s espaces
+\S inverse
+. n'importe quel caractère
+[a-z] tout l'alphabet en minuscule
+[A-Z] tout l'alphabet en majuscule
+[à-9] tout les chiffres
