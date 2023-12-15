@@ -1,0 +1,13 @@
+127.0.0.1 - - [11/Déc/2023:12:34:56 +0000] "GET /page1 HTTP/?1.1" 200 1234
+127.0.0.1 - - [11/Déc/2023:12:35:02 +0000] "POST /submit_form HTTP/1.1" 302 0
+127.0.0.1 - - [11/Déc/2023:12:35:10 +0000] "GET /page2 HTTP/1.1" 404 5678
+192.168.1.23 - - [18/Jun/2015:12:12:54 +0200] "GET /admin/?action=membres&order=QVNDLChzZWxlY3QgKGNhc2UgZmllbGQoY29uY2F0KHN1YnN0cmluZyhiaW4oYXNjaWkoc3Vic3RyaW5nKHBhc3N3b3JkLDEsMSkpKSwxLDEpLHN1YnN0cmluZyhiaW4oYXNjaWkoc3Vic3RyaW5nKHBhc3N3b3JkLDEsMSkpKSwyLDEpKSxjb25jYXQoY2hhcig0OCksY2hhcig0OCkpLGNvbmNhdChjaGFyKDQ4KSxjaGFyKDQ5KSksY29uY2F0KGNoYXIoNDkpLGNoYXIoNDgpKSxjb25jYXQoY2hhcig0OSksY2hhcig0OSkpKXdoZW4gMSB0aGVuIFRSVUUgd2hlbiAyIHRoZW4gc2xlZXAoMikgd2hlbiAzIHRoZW4gc2xlZXAoNCkgd2hlbiA0IHRoZW4gc2xlZXAoNikgZW5kKSBmcm9tIG1lbWJyZXMgd2hlcmUgaWQ9MSk%3D HTTP/1.1" 200 1005 "-" "-"
+161.31.1 32.11 - - [21 /Dec/2001:08:42:55 -0500] "GET /home.htm HTTP/1.0" 200 43 92 http://fr.search.yahoo.com/fr?p=peinture "Mozilla/4.7 [en] (Win98)"
+
+161.31.1 32.11 - - [21 /Dec/2001:08:43:59 -0500] "GET /images/flagfr.jpg HTTP/1.0" 304 - "-" "Mozilla/4.7 [en] (Win98)"
+
+209.130.181.2 - - [21/Dec/2001:08:44:02 -0500] "GET /cs HTTP/1.1" 301 236 "-" "Mozilla/4 .0 (compatible; MSIE 5.5; Windows 98)"
+
+209.130.181.2 - - [21/Dec/2001:08:44:0 3 -0500] "GET /cs/ HTTP/1.1" 200 1643 "-" "Mozilla/4.0 (compatible; MSIE 5.5; Windows 98)"
+
+209.130.181.212 - - [21/Dec/2001:08:44:05 -0500] "GET /cs/frameh.htm HTTP/1.1" 200 7363 "/cs/" "Mozilla/4.0 (compatible; MSIE 5.5; Windows 98)"
