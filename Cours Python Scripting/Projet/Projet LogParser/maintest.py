@@ -1,25 +1,27 @@
-import argparse                     # Gestion des arguments du script
-import re                           # Gestion des expressions régulières du script
-import tkinter as tk                # Gestion de l'interface graphique
-from tkinter import ttk, filedialog # Gestion de l'interface graphique
-import webbrowser                   # Gestion de l'ouverture de l'adresse IP dans le navigateur
+import argparse                         # Gestion des arguments du script
+import re                               # Gestion des expressions régulières du script
+import tkinter as tk                    # Gestion de l'interface graphique
+from tkinter import ttk, filedialog     # Gestion de l'interface graphique
+import tkinter.messagebox as messagebox # Gestion des alertes/notification
+import webbrowser                       # Gestion de l'ouverture de l'adresse IP dans le navigateur
 
-def afficherLogs(logs, maxLignes=10): # Fonction pour afficher les logs dans une interface Tkinter
+import tkinter.messagebox as messagebox
 
-    fenetre = tk.Tk() # Création de la fenêtre principale (Mainloop)
+def afficher_notification(nb_logs):
+    messagebox.showinfo("Logs Chargés", f"{nb_logs} logs chargés avec succès.")
+
+
+def afficherLogs(logs, maxLignes=40):
+    fenetre = tk.Tk()
     fenetre.title("Logs Web")
 
-    # Champ de saisie pour le chemin du fichier
     champFichier = tk.Entry(fenetre, width=50)
     champFichier.grid(row=0, column=0, padx=10, pady=10, columnspan=2, sticky='w')
 
-    # Bouton pour changer de fichier
     boutonChangerFichier = tk.Button(fenetre, text="Changer de fichier", command=lambda: chargerFichier(champFichier, vueLogs))
     boutonChangerFichier.grid(row=0, column=2, padx=10, pady=10, sticky='e')
 
-    # Treeview pour afficher les logs
     vueLogs = ttk.Treeview(fenetre, columns=('@IP', 'Horodatage', 'Requete', 'Status', 'Taille', 'Origine de la Requete', 'User Agent', 'Ouverture IP'))
-    # Configurer les en-têtes des colonnes
     vueLogs.heading('@IP', text='@IP')
     vueLogs.heading('Horodatage', text='Horodatage')
     vueLogs.heading('Requete', text='Requete')
@@ -29,49 +31,52 @@ def afficherLogs(logs, maxLignes=10): # Fonction pour afficher les logs dans une
     vueLogs.heading('User Agent', text='User Agent')
     vueLogs.heading('Ouverture IP', text='Ouverture IP')
 
-    # Configurer les colonnes
     vueLogs.column('@IP', anchor=tk.W, width=100)
     vueLogs.column('Horodatage', anchor=tk.W, width=150)
     vueLogs.column('Requete', anchor=tk.W, width=200)
     vueLogs.column('Status', anchor=tk.W, width=50)
-    vueLogs.column('Taille', anchor=tk.W, width=80)  # Ajuster la largeur de la colonne 'Taille'
+    vueLogs.column('Taille', anchor=tk.W, width=80)
     vueLogs.column('Origine de la Requete', anchor=tk.W, width=150)
     vueLogs.column('User Agent', anchor=tk.W, width=150)
-    vueLogs.column('Ouverture IP', anchor=tk.W, width=80)  # Ajuster la largeur de la colonne 'Ouverture IP'
+    vueLogs.column('Ouverture IP', anchor=tk.W, width=80)
 
     vueLogs.grid(row=1, column=0, padx=10, pady=10, sticky='nsew')
 
-    fenetre.grid_columnconfigure(0, weight=1) # S'occupe du changement de taille des onglets
+    fenetre.grid_columnconfigure(0, weight=1)
 
-    # Configurer la hauteur du widget Treeview en fonction de la taille de la fenêtre
-    hauteurVueLogs = min(len(logs), maxLignes)  # Ajuster le nombre de lignes affichées
-    vueLogs.configure(height=hauteurVueLogs)
+    nbLogs = len(logs)
 
-    # Ajouter les lignes avec la coloration et le bouton 'Ouverture IP'
+    if nbLogs <= 40:
+        hauteurVueLogs = nbLogs
+        vueLogs.configure(height=hauteurVueLogs)
+    else:
+        hauteurVueLogs = maxLignes
+        vueLogs.configure(height=hauteurVueLogs)
+
     for index, log in enumerate(logs[:hauteurVueLogs], 1):
         ip, horodatage, requete, codeStatut, taille, origineRequete, userAgent = log
 
-        # Définir la couleur en fonction du code de statut
         if codeStatut == '200':
             tag = 'vert'
         else:
             tag = 'orange'
 
-        # Ajouter la ligne avec la couleur
         vueLogs.insert('', 'end', values=(ip, horodatage, requete, codeStatut, taille, origineRequete, userAgent, 'Ouverture'), tags=(tag, 'bouton'))
 
-    # Ajout d'un bouton dans la colonne 'Taille' pour trier
     vueLogs.heading('Taille', text='Taille', command=lambda: trierLogsParTaille(vueLogs))
 
-    # Ajouter les tags pour la coloration
     vueLogs.tag_configure('vert', background='green')
     vueLogs.tag_configure('orange', background='orange')
 
-    # Ajouter un événement de clic sur le bouton 'Ouverture IP'
     vueLogs.tag_bind('bouton', '<ButtonRelease-1>', lambda event, vueLogs=vueLogs: ouvrirIp(event, vueLogs))
 
-    # Démarrer la boucle principale Tkinter
+    for index, log in enumerate(logs[:hauteurVueLogs], 1):
+        ip, horodatage, requete, codeStatut, taille, origineRequete, userAgent = log
+
+    afficher_notification(len(logs))
+
     fenetre.mainloop()
+
 
 # Fonction pour ouvrir le navigateur avec l'adresse IP
 def ouvrirIp(event, vueLogs):

@@ -11,3 +11,5 @@
 209.130.181.2 - - [21/Dec/2001:08:44:0 3 -0500] "GET /cs/ HTTP/1.1" 200 1643 "-" "Mozilla/4.0 (compatible; MSIE 5.5; Windows 98)"
 
 209.130.181.212 - - [21/Dec/2001:08:44:05 -0500] "GET /cs/frameh.htm HTTP/1.1" 200 7363 "/cs/" "Mozilla/4.0 (compatible; MSIE 5.5; Windows 98)"
+
+notification de logs chargés

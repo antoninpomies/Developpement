@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logs Web</title>
+</head>
+<body>
+    <h1>Logs Web</h1>
+    <table border="1">
+        <tr>
+            <th>@IP</th>
+            <th>Horodatage</th>
+            <th>Requete</th>
+            <th>Status</th>
+            <th>Taille</th>
+            <th>Origine de la Requete</th>
+            <th>User Agent</th>
+            <th>Ouverture IP</th>
+        </tr>
+        {% for log in logs %}
+        <tr>
+            <td>{{ log[0] }}</td>
+            <td>{{ log[1] }}</td>
+            <td>{{ log[2] }}</td>
+            <td>{{ log[3] }}</td>
+            <td>{{ log[4] }}</td>
+            <td>{{ log[5] }}</td>
+            <td>{{ log[6] }}</td>
+            <td><a href="{{ url_for('ouvrir_ip', ip=log[0]) }}">Ouverture</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
