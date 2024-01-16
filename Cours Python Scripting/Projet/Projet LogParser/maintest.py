@@ -122,35 +122,38 @@ def trierLogsParTaille(vueLogs):
     donnees.sort(key=lambda x: int(x[0]))
     for index, item in enumerate(donnees):
         vueLogs.move(item[1], '', index)
+try:
+    # Initialisation du parser
+    analyseur = argparse.ArgumentParser()
 
-# Initialisation du parser
-analyseur = argparse.ArgumentParser()
+    # Configuration de l'argument f
+    analyseur.add_argument('-f', '--fichier', help='Chemin du fichier à ouvrir et lire')
 
-# Configuration de l'argument f
-analyseur.add_argument('-f', '--fichier', help='Chemin du fichier à ouvrir et lire')
+    # Vérification des arguments
+    arguments = analyseur.parse_args()
 
-# Vérification des arguments
-arguments = analyseur.parse_args()
-
-# Vérification si l'argument -f est présent
-if arguments.fichier:
-    cheminFichierInitial = arguments.fichier
-else:
-    cheminFichierInitial = ""
-
-# Ouverture du fichier en mode lecture grace au 'r'
-with open(cheminFichierInitial, 'r') as fichier:
-
-    contenu = fichier.read()
-
-    # Expression régulière pour l'identification des logs
-    motifLogGenerique = re.compile(r'(\S+) - - \[(.*?)\] "(.*?)" (\d+) (\d+) "(.*?)" "(.*?)"')
-
-    # Recherche des logs d'un fichier grâce a la regex
-    logsGeneriques = motifLogGenerique.findall(contenu)
-
-    # Affichage dans la fenetre
-    if logsGeneriques:
-        afficherLogs(logsGeneriques)
+    # Vérification si l'argument -f est présent
+    if arguments.fichier:
+        cheminFichierInitial = arguments.fichier
     else:
-        print('Aucune trame de logs web trouvée dans le fichier.')
+        cheminFichierInitial = ""
+
+    # Ouverture du fichier en mode lecture grace au 'r'
+    with open(cheminFichierInitial, 'r') as fichier:
+
+        contenu = fichier.read()
+
+        # Expression régulière pour l'identification des logs
+        motifLogGenerique = re.compile(r'(\S+) - - \[(.*?)\] "(.*?)" (\d+) (\d+) "(.*?)" "(.*?)"')
+
+        # Recherche des logs d'un fichier grâce a la regex
+        logsGeneriques = motifLogGenerique.findall(contenu)
+
+        # Affichage dans la fenetre
+        if logsGeneriques:
+            afficherLogs(logsGeneriques)
+        else:
+            print('Aucune trame de logs web trouvée dans le fichier.')
+except Exception as e:
+    print(e)
+    print('Une erreur est survenue lors de la lecture du fichier.')
