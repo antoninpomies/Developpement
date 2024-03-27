@@ -3,11 +3,13 @@ import os
 import tkinter as tk
 import sys
 from tkinter import messagebox
+from datetime import datetime
 
 def rename_pc():
     # Récupération des valeurs des champs
     prefix = prefix_var.get()
-    year_month = year_month_var.get()
+    # Obtention de la date actuelle au format YYMM
+    year_month = datetime.now().strftime('%y%m')
     name = name_entry.get()
 
     # Construction du nouveau nom
@@ -50,20 +52,12 @@ prefix_var = tk.StringVar(value="POR")
 prefix_option = tk.OptionMenu(input_frame, prefix_var, "POR", "UC")
 prefix_option.grid(row=0, column=1)
 
-# Année et mois
-year_month_label = tk.Label(input_frame, text="Année-Mois (AAMM):")
-year_month_label.grid(row=1, column=0)
-
-year_month_var = tk.StringVar()
-year_month_entry = tk.Entry(input_frame, textvariable=year_month_var)
-year_month_entry.grid(row=1, column=1)
-
 # Nom de la personne
 name_label = tk.Label(input_frame, text="Nom de la personne:")
-name_label.grid(row=2, column=0)
+name_label.grid(row=1, column=0)
 
 name_entry = tk.Entry(input_frame)
-name_entry.grid(row=2, column=1)
+name_entry.grid(row=1, column=1)
 
 # Bouton de renommage
 rename_button = tk.Button(root, text="Renommer PC", command=rename_pc)
