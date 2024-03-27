@@ -1,66 +1,53 @@
-import ctypes
-import os
 import tkinter as tk
-import sys
 from tkinter import messagebox
-from datetime import datetime
+import subprocess
+import datetime
 
-def rename_pc():
-    # Récupération des valeurs des champs
-    prefix = prefix_var.get()
-    # Obtention de la date actuelle au format YYMM
-    year_month = datetime.now().strftime('%y%m')
-    name = name_entry.get()
+class RenommerPCApp(tk.Tk):
+    def __init__(self):
+        super().__init__()
 
-    # Construction du nouveau nom
-    new_name = f"{prefix}{year_month}-{name[:7]}".upper()
+        self.title("Renommer PC")
+        self.geometry("400x300")
 
-    # Vérification de la longueur du nom final
-    if len(new_name) > 15:
-        messagebox.showerror("Erreur", "Le nom final dépasse 15 caractères. Veuillez raccourcir le nom de la personne.")
-        return
+        self.label1 = tk.Label(self, text="Sélectionnez les informations:")
+        self.label1.pack(pady=10)
 
-    # Demande des droits administrateur
-    try:
-        if not ctypes.windll.shell32.IsUserAnAdmin():
-            ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
+        self.portable_var = tk.BooleanVar()
+        self.uc_var = tk.BooleanVar()
+        self.nom_entry = tk.Entry(self)
+        self.portable_checkbox = tk.Checkbutton(self, text="PC Portable (PORT)", variable=self.portable_var)
+        self.uc_checkbox = tk.Checkbutton(self, text="Unité Centrale (UC)", variable=self.uc_var)
+        self.nom_label = tk.Label(self, text="Nom du PC:")
+        self.valider_button = tk.Button(self, text="Renommer", command=self.renommer_pc)
+
+        self.nom_entry.pack(pady=5)
+        self.portable_checkbox.pack()
+        self.uc_checkbox.pack()
+        self.nom_label.pack(pady=5)
+        self.valider_button.pack(pady=10)
+
+    def renommer_pc(self):
+        nom = self.nom_entry.get().strip()
+        if not nom:
+            messagebox.showerror("Erreur", "Veuillez entrer un nom pour le PC.")
             return
-    except Exception as e:
-        messagebox.showerror("Erreur", f"Impossible de demander les droits d'administrateur : {e}")
-        return
 
-    # Renommage du PC
-    try:
-        os.system(f"wmic computersystem where caption='%computername%' rename {new_name}")
-        messagebox.showinfo("Succès", f"Le PC a été renommé en {new_name}")
-    except Exception as e:
-        messagebox.showerror("Erreur", f"Erreur lors du renommage du PC : {e}")
+        if not (self.portable_var.get() or self.uc_var.get()):
+            messagebox.showerror("Erreur", "Veuillez sélectionner au moins un type de PC.")
+            return
 
-# Création de la fenêtre principale
-root = tk.Tk()
-root.title("Renommage de PC")
+        prefixe = "PORT" if self.portable_var.get() else "UC"
+        date_format = datetime.datetime.now().strftime("%m%y")
+        nouveau_nom = f"{prefixe}{date_format}{nom}"
 
-# Frame pour les champs de saisie
-input_frame = tk.Frame(root)
-input_frame.pack(pady=10)
+        try:
+            # Appel de PowerShell avec les privilèges administratifs
+            subprocess.run(["powershell.exe", "-Command", f"Rename-Computer -NewName {nouveau_nom} -Force"], shell=True, check=True)
+            messagebox.showinfo("Succès", f"Le PC a été renommé en '{nouveau_nom}'")
+        except subprocess.CalledProcessError as e:
+            messagebox.showerror("Erreur", f"Une erreur s'est produite : {e}")
 
-# Choix du préfixe
-prefix_label = tk.Label(input_frame, text="Préfixe:")
-prefix_label.grid(row=0, column=0)
-
-prefix_var = tk.StringVar(value="POR")
-prefix_option = tk.OptionMenu(input_frame, prefix_var, "POR", "UC")
-prefix_option.grid(row=0, column=1)
-
-# Nom de la personne
-name_label = tk.Label(input_frame, text="Nom de la personne:")
-name_label.grid(row=1, column=0)
-
-name_entry = tk.Entry(input_frame)
-name_entry.grid(row=1, column=1)
-
-# Bouton de renommage
-rename_button = tk.Button(root, text="Renommer PC", command=rename_pc)
-rename_button.pack()
-
-root.mainloop()
+if __name__ == "__main__":
+    app = RenommerPCApp()
+    app.mainloop()
