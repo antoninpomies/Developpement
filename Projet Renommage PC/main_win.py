@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import messagebox, ttk
 import subprocess
 import datetime
 
@@ -10,36 +10,37 @@ class RenommerPCApp(tk.Tk):
         self.title("Renommer PC")
         self.geometry("400x300")
 
-        self.label1 = tk.Label(self, text="Sélectionnez les informations:")
+        self.label1 = tk.Label(self, text="Sélectionnez le type de PC:")
         self.label1.pack(pady=10)
 
-        self.portable_var = tk.BooleanVar()
-        self.uc_var = tk.BooleanVar()
-        self.nom_entry = tk.Entry(self)
-        self.portable_checkbox = tk.Checkbutton(self, text="PC Portable (PORT)", variable=self.portable_var)
-        self.uc_checkbox = tk.Checkbutton(self, text="Unité Centrale (UC)", variable=self.uc_var)
-        self.nom_label = tk.Label(self, text="Nom du PC:")
-        self.valider_button = tk.Button(self, text="Renommer", command=self.renommer_pc)
+        self.pc_type_var = tk.StringVar()
+        self.pc_type_var.set("Sélectionnez...")
+        self.pc_type_combobox = ttk.Combobox(self, textvariable=self.pc_type_var, values=["PC Portable (PORT)", "Unité Centrale (UC)"])
+        self.pc_type_combobox.pack(pady=5)
 
-        self.nom_entry.pack(pady=5)
-        self.portable_checkbox.pack()
-        self.uc_checkbox.pack()
+        self.nom_label = tk.Label(self, text="Nom du PC:")
+        self.nom_entry = tk.Entry(self)
         self.nom_label.pack(pady=5)
+        self.nom_entry.pack(pady=5)
+
+        self.valider_button = tk.Button(self, text="Renommer", command=self.renommer_pc)
         self.valider_button.pack(pady=10)
 
     def renommer_pc(self):
         nom = self.nom_entry.get().strip()
+        pc_type = self.pc_type_var.get()
+
         if not nom:
             messagebox.showerror("Erreur", "Veuillez entrer un nom pour le PC.")
             return
 
-        if not (self.portable_var.get() or self.uc_var.get()):
-            messagebox.showerror("Erreur", "Veuillez sélectionner au moins un type de PC.")
+        if pc_type == "Sélectionnez...":
+            messagebox.showerror("Erreur", "Veuillez sélectionner un type de PC.")
             return
 
-        prefixe = "PORT" if self.portable_var.get() else "UC"
+        prefixe = "PORT" if pc_type == "PC Portable (PORT)" else "UC"
         date_format = datetime.datetime.now().strftime("%m%y")
-        nouveau_nom = f"{prefixe}{date_format}{nom}"
+        nouveau_nom = f"{prefixe}-{date_format}-{nom}"
 
         try:
             # Appel de PowerShell avec les privilèges administratifs
