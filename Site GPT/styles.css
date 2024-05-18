@@ -1,0 +1,184 @@
+/* Default styles */
+body {
+    margin: 0;
+    padding: 0;
+    height: 200vh; /* Double the height to accommodate both sections */
+    overflow-x: hidden;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  /* Header styles */
+  .header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+  }
+  
+  .logo-link {
+    margin: 20px; /* Add margins around the logo */
+  }
+  
+  .left-logo {
+    height: 80px; /* Increased size */
+    width: auto; /* Maintain aspect ratio */
+  }
+  
+  /* Light theme */
+  @media (prefers-color-scheme: light) {
+    body {
+      background-color: #F5F5F5;
+    }
+    .letter {
+      color: #000; /* Black letters for better contrast on light background */
+    }
+    .text {
+      color: #333; /* Dark text for light theme */
+    }
+    .left-logo {
+      content: url('logo-light.png');
+    }
+  }
+  
+  /* Dark theme */
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #212121;
+    }
+    .letter {
+      color: #00ff00; /* Green letters for the Matrix effect */
+    }
+    .text {
+      color: #FFF; /* Light text for dark theme */
+    }
+    .left-logo {
+      content: url('logo-light.png');
+    }
+  }
+  
+  #letter-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+  
+  .letter {
+    position: absolute;
+    top: 0;
+    font-size: 20px;
+    opacity: 0;
+    animation: drop 10s linear infinite; /* Increased animation duration */
+  }
+  
+  @keyframes drop {
+    0% {
+      top: -100%;
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      top: 100%;
+      opacity: 0;
+    }
+  }
+  
+  .main-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px; /* Adjusted to ensure visibility */
+  }
+  
+  .text {
+    font-size: 24px;
+    margin-right: 10px; /* Adjust spacing to prevent overlap with hand */
+  }
+  
+  .wave {
+    font-size: 50px;
+    animation: wave 2s infinite;
+  }
+  
+  @keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(20deg); }
+  }
+  
+  /* Arrow styles */
+  .arrow {
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 40px;
+    transition: transform 0.3s, color 0.3s;
+  }
+  
+  .arrow:hover {
+    transform: scale(1.2);
+  }
+  
+  .arrow:active {
+    transform: scale(1.1) translateY(10px);
+  }
+  
+  /* Arrow clicked color change */
+  .arrow.clicked {
+    color: #32CD32; /* Change this to the desired color */
+    transition: color 0.3s;
+  }
+  
+  /* Summary section styles */
+  .summary-section {
+    margin-top: 100vh; /* Position the summary section below the home page */
+    width: 80%;
+    text-align: center;
+    color: #FFF; /* Change the color of the summary text to white */
+  }
+  
+  .summary-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .summary-section nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .summary-section nav ul li {
+    display: inline;
+  }
+  
+  .summary-section nav ul li a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.2em;
+    transition: color 0.3s;
+  }
+  
+  .summary-section nav ul li a:hover {
+    color: #32CD32; /* Change to the desired hover color */
+  }
+  
+  .summary-section p {
+    font-size: 1.2em;
+  }
